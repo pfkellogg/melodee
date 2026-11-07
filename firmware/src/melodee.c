@@ -77,6 +77,9 @@ static uint8_t res_ok;                  /* res.c: installed and this build's; el
 
 /* ----------------------------------------------------- base, display --- */
 #include "libc.c"
+#ifndef MELODEE_BIG_SCREEN
+#define MELODEE_BIG_SCREEN 1                  /* unofficial: the FM-1 Big Screen mirror (melodee_mirror.c) */
+#endif
 #include "lcd.c"
 #include "gfx.c"
 
@@ -131,6 +134,9 @@ static uint8_t res_ok;                  /* res.c: installed and this build's; el
 #include "ota.c"
 #include "ota_hw.c"
 #include "installer_report.c"
+#if MELODEE_BIG_SCREEN
+#include "melodee_mirror.c"
+#endif
 #define INSTALLER_REPORT_FRAME installer_report_frame
 #include "editor.c"              /* web editor SysEx (needs the OTA SysEx plumbing) */
 #endif

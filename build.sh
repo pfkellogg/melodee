@@ -20,9 +20,9 @@ PY="${PYTHON:-python3}"
 "$PY" -c 'import lzma' 2>/dev/null || { echo "build.sh: $PY was built without lzma (the boot images need it)"; exit 1; }
 "$PY" -c 'from PIL import features; assert features.check("raqm")' 2>/dev/null ||
     { echo "build.sh: $PY's Pillow has no Raqm (the UI font needs OpenType features: brew install fribidi)"; exit 1; }
-[ -x "$JIELI_TOOLCHAIN/pi32v2/bin/clang" ] || { echo "build.sh: no toolchain in $JIELI_TOOLCHAIN (run tools/get_toolchain.sh)"; exit 1; }
+[ -n "$JIELI_WINE" ] || [ -x "$JIELI_TOOLCHAIN/pi32v2/bin/clang" ] || { echo "build.sh: no toolchain in $JIELI_TOOLCHAIN (run tools/get_toolchain.sh)"; exit 1; }
 [ -f "$AC79_SDK/cpu/wl82/tools/uboot.boot" ] || { echo "build.sh: no JieLi AC79 SDK in $AC79_SDK"; exit 1; }
-if [ "$(uname -s)" != Linux ] || [ "$(uname -m)" != x86_64 ]; then
+if [ -z "$JIELI_WINE" ] && { [ "$(uname -s)" != Linux ] || [ "$(uname -m)" != x86_64 ]; }; then
     docker info >/dev/null 2>&1 || { echo "build.sh: Docker is not running"; exit 1; }
 fi
 exec "$PY" tools/build.py "$@"

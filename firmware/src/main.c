@@ -368,6 +368,9 @@ static void fm1_main(void)
             }
         }
         cz_service();
+#if MELODEE_BIG_SCREEN
+        mirror_service();                               /* the FM-1 Big Screen mirror (melodee_mirror.c) */
+#endif
         fm6_service();                                  /* DX7 SysEx for FM6, a pending FM6 settings save */
 #if MELODEE_OTA
         ed_service();                                   /* web editor SysEx */

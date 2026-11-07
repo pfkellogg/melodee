@@ -612,6 +612,10 @@ stall:
 }
 
 /* SysEx assembly: only short commands matter here */
+#if MELODEE_BIG_SCREEN
+int sm_sysex(const uint8_t *m, unsigned n);           /* the Big Screen mirror (melodee_mirror.c, screen_mirror.c) */
+#endif
+
 static void sysex_byte(uint8_t b)
 {
 #ifdef CZ_RX
@@ -656,6 +660,10 @@ static void sysex_byte(uint8_t b)
             ok = usb.sysex[i] == UBOOT_KEY[i];
         if (ok)
             usb.uboot_req = 1;
+#if MELODEE_BIG_SCREEN
+        else if (usb.sx_len == 6u && usb.sysex[1] == 0x7D && usb.sysex[2] == 'F' && usb.sysex[3] == 'S')
+            sm_sysex(usb.sysex, 6u);                    /* the Big Screen mirror's hello (melodee_mirror.c) */
+#endif
 #if MELODEE_OTA
         else if (usb.sx_len == 6u && usb.sysex[1] == 0x22 && usb.sysex[2] == 0x24 && usb.sysex[3] == 0x35 &&
                  usb.sysex[4] == 0x7F)
