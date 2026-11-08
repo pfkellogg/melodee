@@ -23,6 +23,8 @@ normal. Not tested for long sessions, or over any firmware but Melodee 1.6.1.
   attestation** and is not byte-for-byte a Melodee build.
 - It still calls itself Melodee 1.6.1, and it doesn't update itself.
 
+> **Newer FM-1s** (sold from late 2026, flash chip `0xB36014`, see [M-Flasher](https://github.com/jvitkauskas/m-flasher)): this build knows their chip, so saving works on them too. Not yet tested by us on one.
+
 ## Installing it
 
 Install at your own risk, and back up your sounds and projects first with Melodee's web editor.
