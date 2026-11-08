@@ -4,7 +4,7 @@
 [Felucca](https://github.com/hugelton/Felucca)), with one addition: while an app asks for it, the FM-1 sends its screen,
 the sound playing and the BPM over its USB cable, so [FM-1 Mirror](https://github.com/pfkellogg/fm1-mirror) and
 [FM-1 Mirror + Spyglass](https://github.com/pfkellogg/fm1-mirror-spyglass-android) show it big, live.
-For players who can't read the FM-1's 1.54-inch screen.
+For players who can't read the FM-1's 1.54-inch screen. Watch it: [FM-1 Mirror's Big Update: Smooth, a Floating Spyglass, and Melodee on a Big Screen](https://youtu.be/Cve21r8oZJs).
 
 This is an **unofficial** build, not a Melodee release, and keremimo has nothing to do with it. Please report problems
 with it to FM-1 Mirror, not to Melodee. Everything else is **Melodee 1.6.1** (tag `v1.6.1`, commit `165d177`) as published.
